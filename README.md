@@ -31,7 +31,7 @@ This is the **frontend** of the Microfinance Loan System built for *Sood Se Pak*
 
 ```bash
 # Step 1: Clone the repository
-git clone https://github.com/your-username/microfinance-loan-app-frontend.git
+git clone https://github.com/Muhammad-Arsalan-Khan/Microfinance-Frontend.git
 cd microfinance-loan-app-frontend
 
 # Step 2: Install dependencies
