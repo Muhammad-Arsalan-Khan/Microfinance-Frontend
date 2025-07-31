@@ -1,8 +1,7 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-import LoanApplicationCard from "../../components/admin/LoanApplicationCard";
-import { Box, Typography } from "@mui/material";
-
+import axios from "axios"
+import { useEffect, useState } from "react"
+import LoanApplicationCard from "../../components/admin/LoanApplicationCard"
+import { Box, Typography } from "@mui/material"
 
 function Approved() {
   const [LoanApprovedApplicationData, setLoanApprovedApplicationData] = useState(
@@ -22,7 +21,7 @@ function Approved() {
       setLoanApprovedApplicationData(response.data.data)
       // console.log(response.data.data)
     } catch (error) {
-      console.error("error fetching loan application:", error);
+      console.error("error fetching loan application:", error)
     }
   };
 
@@ -45,8 +44,8 @@ function Approved() {
       )
       }
     </>
-  );
+  )
 }
 
-export default Approved;
+export default Approved
 

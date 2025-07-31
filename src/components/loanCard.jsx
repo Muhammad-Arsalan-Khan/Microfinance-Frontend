@@ -1,15 +1,13 @@
-import React from "react";
-import { useEffect, useState } from "react";
-import { AppBar, Toolbar, Button, Typography, Box} from "@mui/material";
-import { Link } from "react-router-dom";
-import LoanModal from "../model/loanForm.jsx";
+import {  useState } from "react"
+import {Button, Box} from "@mui/material"
+import LoanModal from "../model/loanForm.jsx"
 import LoandeatilCrad from "./loandeatilCrad.jsx"
 const userData = JSON.parse(localStorage.getItem("user"))
 
 function LoanCard() {
-  const [showLoanModal, setshowLoanModal] = useState(false);
-   const [isRefresh, setIsRefresh] = useState(false);
-     const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+  const [showLoanModal, setshowLoanModal] = useState(false)
+   const [isRefresh, setIsRefresh] = useState(false)
+     const [isButtonDisabled, setIsButtonDisabled] = useState(false)
   return (
     <>
       <Box
@@ -18,9 +16,6 @@ function LoanCard() {
         justifyContent="space-between"
         margin="15px auto"
         flexDirection="column"
-        // padding={4}
-        // border={"1px solid black"}
-        // maxWidth="lg"
       >
         <h1>
           Welcome to Microfinance,{" "}
@@ -49,4 +44,4 @@ function LoanCard() {
   );
 }
 
-export default LoanCard;
+export default LoanCard

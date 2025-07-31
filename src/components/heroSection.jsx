@@ -1,7 +1,7 @@
-import React from "react";
-import { Container, Box, Typography, colors } from "@mui/material";
-import panelimg from "../assets/panelimg.png";
-import TypingEffect from "./typeingEffect";
+import React from "react"
+import { Container, Box, Typography } from "@mui/material"
+import panel2 from "../assets/panel2.png"
+import TypingEffect from "./typeingEffect"
 
 const HeroSection = () => {
   return (
@@ -12,13 +12,12 @@ const HeroSection = () => {
         justifyContent="space-between"
         flexDirection="row"
         padding={4}
-        // border={"1px solid black"}
       >
         <Box flex={1} paddingLeft={4}>
           <Typography variant="h3" gutterBottom fontWeight="bold">
             Welcome to{" "}
             <Box component="span" color="#8BC441">
-              Saylani
+              MAK
             </Box>{" "}
             Welfare Non Governmental Organization in Pakistan
           </Typography>
@@ -32,7 +31,7 @@ const HeroSection = () => {
 
         <Box flex={1} display="flex" justifyContent="center">
           <img
-            src={panelimg}
+            src={panel2}
             alt="Mak Welfare"
             style={{ width: "100%", maxWidth: "400px", borderRadius: "8px" }}
           />
@@ -42,4 +41,4 @@ const HeroSection = () => {
   );
 };
 
-export default HeroSection;
+export default HeroSection

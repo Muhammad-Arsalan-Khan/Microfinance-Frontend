@@ -1,5 +1,4 @@
-// src/components/SignupForm.jsx
-import React, { useState,} from "react";
+import  { useState,} from "react";
 import {
   Box,
   TextField,
@@ -9,19 +8,19 @@ import {
   Snackbar,
   Alert,
   Link
-} from "@mui/material";
+} from "@mui/material"
 import axios from "axios";
-import { useForm, Controller } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import signupSchema from "../validation/signupSchema";
-import OtpModal from "../model/otp";
+import { useForm, Controller } from "react-hook-form"
+import { yupResolver } from "@hookform/resolvers/yup"
+import signupSchema from "../validation/signupSchema"
+import OtpModal from "../model/otp"
 
 
 
 const SignupForm = () => {
-  const [showModal, setShowModal] = useState(false);
-  const [userId, setUserId] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [showModal, setShowModal] = useState(false)
+  const [userId, setUserId] = useState(null)
+  const [loading, setLoading] = useState(false)
   const [snackbar, setSnackbar] = useState({
     open: false,
     message: "",
@@ -48,8 +47,6 @@ const SignupForm = () => {
   });
 
   const onSubmit = async (data) => {
-    // console.log("Form Data:", data);
-    
     try {
       setLoading(true);
       const response = await axios.post(
@@ -148,8 +145,8 @@ const SignupForm = () => {
         </Alert>
       </Snackbar>
     </Paper>
-  );
-};
+  )
+}
 
 export default SignupForm
 

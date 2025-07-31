@@ -1,32 +1,22 @@
-// src/components/LoginPage.jsx
-import React, { useState } from "react";
-import {
-  Box,
-  TextField,
-  Button,
-  Typography,
-  Paper,
-  Snackbar,
-  Alert,
-  Link
-} from "@mui/material";
-import { useForm, Controller } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import loginSchema from "../validation/loginSchema";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import OtpModal from "../model/otp";
+import  { useState } from "react";
+import { Box, TextField, Button, Typography,Paper,Snackbar,Alert,Link} from "@mui/material"
+import { useForm, Controller } from "react-hook-form"
+import { yupResolver } from "@hookform/resolvers/yup"
+import loginSchema from "../validation/loginSchema"
+import axios from "axios"
+import { useNavigate } from "react-router-dom"
+import OtpModal from "../model/otp"
 
 const LoginPage = () => {
-  const [showOtpModal, setShowOtpModal] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [userId, setUserId] = useState(null);
+  const [showOtpModal, setShowOtpModal] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [userId, setUserId] = useState(null)
   const [snackbar, setSnackbar] = useState({
     open: false,
     message: "",
     severity: "info",
   });
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   const {
     control,
@@ -58,12 +48,12 @@ const LoginPage = () => {
         });
         if (userData.isAdmin) {
           setTimeout(() => {
-            navigate(`/admin/dashboard/${userData.id}`);
+            navigate(`/admin/dashboard/${userData.id}`)
           }, 1500);
         } else {
           setTimeout(() => {
             navigate(`/dashboard/${userData.id}`)
-          }, 1500);
+          }, 1500)
         }
         setLoading(false);
       }
@@ -155,7 +145,7 @@ const LoginPage = () => {
         </Alert>
       </Snackbar>
     </Paper>
-  );
-};
+  )
+}
 
-export default LoginPage;
+export default LoginPage

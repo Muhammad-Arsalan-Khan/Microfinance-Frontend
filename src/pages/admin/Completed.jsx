@@ -1,15 +1,7 @@
-// import React from 'react';
-
-// function Completed() {
-//   return <h1>Completed</h1>;
-// }
-
-// export default Completed;
-
-import axios from "axios";
-import { useEffect, useState } from "react";
-import LoanApplicationCard from "../../components/admin/LoanApplicationCard";
-import { Box, Typography } from "@mui/material";
+import axios from "axios"
+import { useEffect, useState } from "react"
+import LoanApplicationCard from "../../components/admin/LoanApplicationCard"
+import { Box, Typography } from "@mui/material"
 
 function Completed() {
   const [LoanCompletedApplicationData, setLoanCompletedApplicationData] = useState(
@@ -17,7 +9,7 @@ function Completed() {
   );
 
   useEffect(() => {
-    fetchLoanCompletedApplication();
+    fetchLoanCompletedApplication()
   }, []);
 
   const fetchLoanCompletedApplication = async () => {
@@ -52,10 +44,10 @@ function Completed() {
       )
       }
     </>
-  );
+  )
 }
 
-export default Completed;
+export default Completed
 
 
 

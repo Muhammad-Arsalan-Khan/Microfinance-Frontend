@@ -1,7 +1,6 @@
-import React from 'react';
-import { Box, Typography, Button } from '@mui/material';
-import { Link } from 'react-router-dom';
-import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
+import { Box, Typography, Button } from '@mui/material'
+import { Link } from 'react-router-dom'
+import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline'
 
 const NotFound = () => {
   return (
@@ -49,4 +48,4 @@ const NotFound = () => {
   );
 };
 
-export default NotFound;
+export default NotFound

@@ -1,7 +1,6 @@
-import React from 'react';
-import { Modal, Box, Typography, Button, IconButton } from '@mui/material';
-import CloseIcon from '@mui/icons-material/Close';
-import jsPDF from 'jspdf';
+import { Modal, Box, Typography, Button, IconButton } from '@mui/material'
+import CloseIcon from '@mui/icons-material/Close'
+import jsPDF from 'jspdf'
 
 const style = {
   position: 'absolute',
@@ -21,44 +20,42 @@ const style = {
 const AppointmentModal = ({ open, handleClose, data }) => {
 
   const handleDownloadPDF = () => {
-     const doc = new jsPDF();
+     const doc = new jsPDF()
   const pageWidth = doc.internal.pageSize.getWidth();
   const pageHeight = doc.internal.pageSize.getHeight();
 
-  // Draw border with color #8BC441
-  doc.setDrawColor('#8BC441');
+  doc.setDrawColor('#8BC441')
   doc.setLineWidth(1.5);
   doc.rect(10, 10, pageWidth - 20, pageHeight - 20)
 
-  // Add heading with color #005EB8, bold, centered
   doc.setFontSize(22);
-  doc.setTextColor('#005EB8');
-  doc.setFont('helvetica', 'bold');
-  doc.text('Appointment Details', pageWidth / 2, 30, { align: 'center' });
+  doc.setTextColor('#005EB8')
+  doc.setFont('helvetica', 'bold')
+  doc.text('Appointment Details', pageWidth / 2, 30, { align: 'center' })
 
   let y = 50;
-  const lineHeight = 10;
+  const lineHeight = 10
 
   const addLine = (label, value) => {
-    doc.setFontSize(12);
-    doc.setTextColor('#000');
-    doc.setFont('helvetica', 'normal');
-    doc.text(`${label}: ${value}`, 20, y);
-    y += lineHeight;
+    doc.setFontSize(12)
+    doc.setTextColor('#000')
+    doc.setFont('helvetica', 'normal')
+    doc.text(`${label}: ${value}`, 20, y)
+    y += lineHeight
   };
 
-  addLine('ID',   data.token  || 'N/A');
-  addLine('Name', data.userName || 'N/A');
-  addLine('Loan Status', data.loanStatus || 'N/A');
-  addLine('Category', data.category || 'N/A');
-  addLine('Subcategory', data.subCategory || 'N/A');
-  addLine('Date', data.appointmentDate || 'N/A');
-  addLine('Time', data.appointmentTime || 'N/A');
-  addLine('Location', data.appointmentLocation || 'N/A');
-  addLine('Requested Amount', data.requestedAmount || 'N/A');
-  addLine('Initial Payment', data.initialPayment || 'N/A');
-  addLine('Monthly Installment', data.monthlyInstallment || 'N/A');
-  addLine('Duration', data.durationMonths ? `${data.durationMonths} months` : 'N/A');
+  addLine('ID',   data.token  || 'N/A')
+  addLine('Name', data.userName || 'N/A')
+  addLine('Loan Status', data.loanStatus || 'N/A')
+  addLine('Category', data.category || 'N/A')
+  addLine('Subcategory', data.subCategory || 'N/A')
+  addLine('Date', data.appointmentDate || 'N/A')
+  addLine('Time', data.appointmentTime || 'N/A')
+  addLine('Location', data.appointmentLocation || 'N/A')
+  addLine('Requested Amount', data.requestedAmount || 'N/A')
+  addLine('Initial Payment', data.initialPayment || 'N/A')
+  addLine('Monthly Installment', data.monthlyInstallment || 'N/A')
+  addLine('Duration', data.durationMonths ? `${data.durationMonths} months` : 'N/A')
 
   doc.save('appointment-details.pdf')
   };
@@ -66,7 +63,6 @@ const AppointmentModal = ({ open, handleClose, data }) => {
   return (
     <Modal open={open} onClose={handleClose}>
       <Box sx={style}>
-        {/* Close button top-right */}
         <IconButton
           aria-label="close"
           onClick={handleClose}

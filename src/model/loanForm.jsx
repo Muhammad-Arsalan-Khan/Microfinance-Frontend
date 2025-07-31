@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { toast } from "react-toastify";
-import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react"
+import { toast } from "react-toastify"
+import { useParams } from "react-router-dom"
 import {
   Modal,
   Box,
@@ -13,11 +13,11 @@ import {
   MenuItem,
   InputLabel,
   FormControl,
-} from "@mui/material";
-import CloseIcon from "@mui/icons-material/Close";
-import { useForm } from "react-hook-form";
-import axios from "axios";
-import Swal from "sweetalert2";
+} from "@mui/material"
+import CloseIcon from "@mui/icons-material/Close"
+import { useForm } from "react-hook-form"
+import axios from "axios"
+import Swal from "sweetalert2"
 
 const modalStyle = {
   position: "absolute",
@@ -53,9 +53,9 @@ const LoanModal = ({ onClose, fetchData }) => {
         `http://localhost:5000/api/loancategories`,
         { withCredentials: true }
       );
-      setCatData(response.data.data);
+      setCatData(response.data.data)
     } catch (error) {
-      console.error("Error fetching categories:", error);
+      console.error("error fetching categories", error)
     }
   }
 
@@ -67,25 +67,25 @@ const LoanModal = ({ onClose, fetchData }) => {
     watch,
     setValue,
     clearErrors,
-  } = useForm({ mode: "onChange" });
+  } = useForm({ mode: "onChange" })
 
   useEffect(() => {
-    setValue("subCategory", "");
-    clearErrors("subCategory");
-  }, [watch("category")]);
+    setValue("subCategory", "")
+    clearErrors("subCategory")
+  }, [watch("category")])
 
   const handleClose = () => {
-    reset();
-    setStep(1);
-    setImage(null);
-    setGuarantor2Error(false);
-    onClose();
+    reset()
+    setStep(1)
+    setImage(null)
+    setGuarantor2Error(false)
+    onClose()
   };
 
   const onSubmit = async (data) => {
     setLoading(true);
     try {
-      const formData = new FormData();
+      const formData = new FormData()
 
       const guarantors = [
         {
@@ -112,17 +112,17 @@ const LoanModal = ({ onClose, fetchData }) => {
         guarantor2Email,
         guarantor2Location,
         ...rest
-      } = data;
+      } = data
 
       for (const key in rest) {
-        formData.append(key, rest[key]);
+        formData.append(key, rest[key])
       }
 
       if (image) {
-        formData.append("image", image);
+        formData.append("image", image)
       }
 
-      formData.append("guarantors", JSON.stringify(guarantors));
+      formData.append("guarantors", JSON.stringify(guarantors))
 
       const response = await axios.post(
         `http://localhost:5000/api/loanrequest/${id}`,
@@ -140,19 +140,19 @@ const LoanModal = ({ onClose, fetchData }) => {
         icon: "success",
         draggable: true,
       });
-      fetchData();
+      fetchData()
     } catch (error) {
       toast.error("Error submitting application", {
         position: "top-right",
         autoClose: 3000,
       });
-      console.error(err);
+      console.error(err)
     }
   };
 
   const handleNext = async (currentStep) => {
     if (currentStep === 1) {
-      const requiredFields = ["userName", "userCnic", "userEmail", "category"];
+      const requiredFields = ["userName", "userCnic", "userEmail", "category"]
       const allFilled = requiredFields.every((field) => !!watch(field));
       if (!allFilled) return;
       setStep(2);
@@ -164,17 +164,17 @@ const LoanModal = ({ onClose, fetchData }) => {
         "durationMonths",
       ];
       const allFilled = requiredFields.every((field) => !!watch(field));
-      if (!allFilled) return;
+      if (!allFilled) return
 
-      const requestedAmount = Number(watch("requestedAmount"));
-      const initialPayment = Number(watch("initialPayment"));
-      const durationMonths = Number(watch("durationMonths"));
+      const requestedAmount = Number(watch("requestedAmount"))
+      const initialPayment = Number(watch("initialPayment"))
+      const durationMonths = Number(watch("durationMonths"))
 
       const maxAmount = catData.find(
         (cat) => cat.category === watch("category")
       )?.maxAmount;
       if (Number(requestedAmount) > Number(maxAmount)) {
-        return setError2(`Maximum loan limit is PKR ${maxAmount}`);
+        return setError2(`Maximum loan limit is PKR ${maxAmount}`)
       }
 
       if (Number(initialPayment) < 0.3 * requestedAmount) {
@@ -227,25 +227,24 @@ const LoanModal = ({ onClose, fetchData }) => {
       const allFilled = requiredFields.every((field) => !!watch(field));
       if (!allFilled) return;
 
-      const guarantor1Cnic = watch("guarantor1Cnic");
-      const guarantor2Cnic = watch("guarantor2Cnic");
+      const guarantor1Cnic = watch("guarantor1Cnic")
+      const guarantor2Cnic = watch("guarantor2Cnic")
 
       if (guarantor1Cnic === guarantor2Cnic) {
-        setGuarantor2Error(true);
+        setGuarantor2Error(true)
         return;
       } else {
-        setGuarantor2Error(false);
+        setGuarantor2Error(false)
       }
 
       setStep(5);
     } else if (currentStep === 5) {
       if (!image) return;
-      setStep(6);
+      setStep(6)
     }
   };
 
-  // Helper for error highlighting
-  const getFieldError = (field) => !!errors[field];
+  const getFieldError = (field) => !!errors[field]
 
   return (
     <Modal open={true} onClose={handleClose}>
@@ -262,7 +261,6 @@ const LoanModal = ({ onClose, fetchData }) => {
           </IconButton>
         </Box>
 
-        {/* Step 1: Basic Info */}
         {step === 1 && (
           <form onSubmit={(e) => e.preventDefault()}>
             <Box display="flex" flexDirection="column" gap={2}>
@@ -335,7 +333,7 @@ const LoanModal = ({ onClose, fetchData }) => {
           </form>
         )}
 
-        {/* Step 2: Subcategory & Loan Details */}
+        
         {step === 2 && (
           <form onSubmit={handleSubmit(onSubmit)}>
             <Box display="flex" flexDirection="column" gap={2}>
@@ -426,7 +424,6 @@ const LoanModal = ({ onClose, fetchData }) => {
           </form>
         )}
 
-        {/* Step 3: Guarantor 1 Details */}
         {step === 3 && (
           <form onSubmit={(e) => e.preventDefault()}>
             <Box display="flex" flexDirection="column" gap={2}>
@@ -498,7 +495,6 @@ const LoanModal = ({ onClose, fetchData }) => {
           </form>
         )}
 
-        {/* Step 4: Guarantor 2 Details */}
         {step === 4 && (
           <form onSubmit={(e) => e.preventDefault()}>
             <Box display="flex" flexDirection="column" gap={2}>
@@ -584,7 +580,6 @@ const LoanModal = ({ onClose, fetchData }) => {
           </form>
         )}
 
-        {/* Step 5: Image Upload */}
         {step === 5 && (
           <form onSubmit={(e) => e.preventDefault()}>
             <Box display="flex" flexDirection="column" gap={2}>
@@ -625,7 +620,6 @@ const LoanModal = ({ onClose, fetchData }) => {
           </form>
         )}
 
-        {/* Step 6: Confirmation */}
         {step === 6 && (
           <Box
             display="flex"
@@ -729,7 +723,7 @@ const LoanModal = ({ onClose, fetchData }) => {
         )}
       </Box>
     </Modal>
-  );
-};
+  )
+}
 
-export default LoanModal;
+export default LoanModal

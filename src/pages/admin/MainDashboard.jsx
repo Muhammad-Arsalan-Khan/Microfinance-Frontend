@@ -1,14 +1,14 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
+import axios from "axios"
+import { useEffect, useState } from "react"
 import { Box, Card, CardContent, Typography, Grid, Button } from "@mui/material"
 import DaysStatusModal from "../../model/admin/DaysStatus"
 
 function MainDashboard() {
-  const [LoanApplicationData, setLoanApplicationData] = useState([]);
-    const [openModal, setOpenModal] = useState(false);
+  const [LoanApplicationData, setLoanApplicationData] = useState([])
+    const [openModal, setOpenModal] = useState(false)
 
   useEffect(() => {
-    fetchLoanApplication();
+    fetchLoanApplication()
   }, []);
 
   const fetchLoanApplication = async () => {
@@ -17,16 +17,16 @@ function MainDashboard() {
         `http://localhost:5000/api/loanrequest`,
         { withCredentials: true }
       );
-      setLoanApplicationData(response.data.data);
+      setLoanApplicationData(response.data.data)
     } catch (error) {
-      console.error("error fetching loan application:", error);
+      console.error("error fetching loan application:", error)
     }
   };
 
   const getStatusCount = (status) =>
-    LoanApplicationData.filter((item) => item.loanStatus === status).length;
+    LoanApplicationData.filter((item) => item.loanStatus === status).length
 
-  const statuses = ["Pending", "Approved", "Rejected", "completed"];
+  const statuses = ["Pending", "Approved", "Rejected", "completed"]
 
   return (
     <Box p={3}>
@@ -58,7 +58,7 @@ function MainDashboard() {
       </Button>
       {openModal && <DaysStatusModal open={openModal} handleClose={() => setOpenModal(false)} />}
     </Box>
-  );
+  )
 }
 
-export default MainDashboard;
+export default MainDashboard

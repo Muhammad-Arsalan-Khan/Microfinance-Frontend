@@ -1,4 +1,3 @@
-// src/validation/signupSchema.js
 import * as yup from "yup";
 
 const signupSchema = yup.object().shape({
@@ -22,4 +21,4 @@ const signupSchema = yup.object().shape({
   country: yup.string().required("Country is required"),
 });
 
-export default signupSchema;
+export default signupSchema

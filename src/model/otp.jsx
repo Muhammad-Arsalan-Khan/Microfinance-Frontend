@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import { Box, Modal, Typography, TextField, Button } from "@mui/material";
-import {  toast } from "react-toastify";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react"
+import { Box, Modal, Typography, TextField, Button } from "@mui/material"
+import {  toast } from "react-toastify"
+import axios from "axios"
+import { useNavigate } from "react-router-dom"
 
 const modalStyle = {
   position: "absolute",
@@ -48,16 +48,16 @@ const OtpModal = ({ onClose, userId, page }) => {
             }
           );
         }
-        setLoading(false);
+        setLoading(false)
         setTimeout(() => {
-          navigate("/login");
-           onClose();
-        }, 1500);
+          navigate("/login")
+           onClose()
+        }, 1500)
       }
-      setLoading(false);
+      setLoading(false)
     } catch (err) {
-      setLoading(false);
-      setError(err.response?.data?.message || "OTP verification failed");
+      setLoading(false)
+      setError(err.response?.data?.message || "OTP verification failed")
     }
   };
 
@@ -102,7 +102,7 @@ const OtpModal = ({ onClose, userId, page }) => {
           </Button>
         </Box>
       </Modal>
-  );
-};
+  )
+}
 
-export default OtpModal;
+export default OtpModal

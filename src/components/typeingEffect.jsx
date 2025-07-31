@@ -1,39 +1,38 @@
-import React, { useEffect, useState } from 'react';
-import { Box, Typography, Divider } from '@mui/material';
+import { useEffect, useState } from 'react'
+import { Box, Typography, Divider } from '@mui/material'
 
-const words = ['Daily Meals', 'Health Care', 'Free Education', 'Support Services', 'Monthly Family Support', 'Clean Water & Lot More'];
+const words = ['Daily Meals', 'Health Care', 'Free Education', 'Support Services', 'Monthly Family Support', 'Clean Water & Lot More']
 
 const TypingEffect = () => {
-  const [text, setText] = useState('');
-  const [wordIndex, setWordIndex] = useState(0);
-  const [charIndex, setCharIndex] = useState(0);
-  const [isDeleting, setIsDeleting] = useState(false);
+  const [text, setText] = useState('')
+  const [wordIndex, setWordIndex] = useState(0)
+  const [charIndex, setCharIndex] = useState(0)
+  const [isDeleting, setIsDeleting] = useState(false)
 
   useEffect(() => {
-    const currentWord = words[wordIndex];
-    const speed = isDeleting ? 50 : 100;
+    const currentWord = words[wordIndex]
+    const speed = isDeleting ? 50 : 100
 
     const timeout = setTimeout(() => {
-      setText(currentWord.slice(0, charIndex));
+      setText(currentWord.slice(0, charIndex))
 
       if (!isDeleting && charIndex < currentWord.length) {
-        setCharIndex((prev) => prev + 1);
+        setCharIndex((prev) => prev + 1)
       } else if (isDeleting && charIndex > 0) {
-        setCharIndex((prev) => prev - 1);
+        setCharIndex((prev) => prev - 1)
       } else if (!isDeleting && charIndex === currentWord.length) {
-        setTimeout(() => setIsDeleting(true), 1000);
+        setTimeout(() => setIsDeleting(true), 1000)
       } else if (isDeleting && charIndex === 0) {
         setIsDeleting(false);
-        setWordIndex((prev) => (prev + 1) % words.length);
+        setWordIndex((prev) => (prev + 1) % words.length)
       }
-    }, speed);
+    }, speed)
 
-    return () => clearTimeout(timeout);
-  }, [charIndex, isDeleting, wordIndex]);
+    return () => clearTimeout(timeout)
+  }, [charIndex, isDeleting, wordIndex])
 
   return (
     <Box display="flex" flexDirection={"column"} justifyContent="center"  height="200px" >
-       {/* Line 1: Static Heading */}
       <Typography variant="h5" gutterBottom fontWeight="600">
         The largest NGO offering free&nbsp;
       </Typography>

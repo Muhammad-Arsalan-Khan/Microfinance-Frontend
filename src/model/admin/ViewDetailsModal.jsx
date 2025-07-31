@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react"
 import {
   Modal,
   Box,
@@ -8,9 +8,9 @@ import {
   Select,
   FormControl,
   InputLabel,
-} from "@mui/material";
-import { jsPDF } from "jspdf";
-import axios from "axios";
+} from "@mui/material"
+import { jsPDF } from "jspdf"
+import axios from "axios"
 
 const style = {
   position: "absolute",
@@ -30,62 +30,60 @@ function ViewDetailsModal({ open, handleClose, application }) {
   const [loanStatus, setloanStatus] = useState(application.loanStatus || "Pending");
 
   const handleDownload = () => {
-    const doc = new jsPDF();
-    const pageWidth = doc.internal.pageSize.getWidth();
-    const pageHeight = doc.internal.pageSize.getHeight();
-    const margin = 15;
-    let y = margin + 30;
+    const doc = new jsPDF()
+    const pageWidth = doc.internal.pageSize.getWidth()
+    const pageHeight = doc.internal.pageSize.getHeight()
+    const margin = 15
+    let y = margin + 30
 
-    // Title
-    doc.setTextColor("#005EB8");
-    doc.setFontSize(22);
-    doc.setFont("helvetica", "bold");
-    doc.text("Microfinance", pageWidth / 2, margin + 10, { align: "center" });
+    doc.setTextColor("#005EB8")
+    doc.setFontSize(22)
+    doc.setFont("helvetica", "bold")
+    doc.text("Microfinance", pageWidth / 2, margin + 10, { align: "center" })
 
-    // Border
-    doc.setDrawColor("#8BC441");
+    doc.setDrawColor("#8BC441")
     doc.setLineWidth(1.5);
-    doc.rect(margin, margin, pageWidth - margin * 2, pageHeight - margin * 2);
+    doc.rect(margin, margin, pageWidth - margin * 2, pageHeight - margin * 2)
 
-    // Reset styling
-    doc.setTextColor(0);
-    doc.setFontSize(12);
-    doc.setFont("helvetica", "normal");
+    
+    doc.setTextColor(0)
+    doc.setFontSize(12)
+    doc.setFont("helvetica", "normal")
 
-    const lineHeight = 8;
-    const labelX = margin + 5;
-    const valueX = margin + 60;
+    const lineHeight = 8
+    const labelX = margin + 5
+    const valueX = margin + 60
 
     const addLine = (label, value) => {
       if (y > pageHeight - margin - 50) {
         doc.addPage();
         y = margin;
       }
-      doc.setFont("helvetica", "bold");
-      doc.text(`${label}:`, labelX, y);
-      doc.setFont("helvetica", "normal");
-      doc.text(`${value}`, valueX, y);
+      doc.setFont("helvetica", "bold")
+      doc.text(`${label}:`, labelX, y)
+      doc.setFont("helvetica", "normal")
+      doc.text(`${value}`, valueX, y)
       y += lineHeight;
-    };
+    }
 
     // Add data
-    addLine("User Name", application.userName);
-    addLine("Email", application.userEmail);
-    addLine("CNIC", application.userCnic);
-    addLine("Loan Status", application.loanStatus);
-    addLine("Category", `${application.category} - ${application.subCategory}`);
-    addLine("Requested Amount", application.requestedAmount);
-    addLine("Initial Payment", application.initialPayment);
-    addLine("Monthly Installment", application.monthlyInstallment);
-    addLine("Duration (Months)", application.durationMonths);
-    addLine("Appointment Date", application.appointmentDate);
-    addLine("Appointment Time", application.appointmentTime);
-    addLine("Appointment Location", application.appointmentLocation);
-    addLine("ID (Token)", application.token);
+    addLine("User Name", application.userName)
+    addLine("Email", application.userEmail)
+    addLine("CNIC", application.userCnic)
+    addLine("Loan Status", application.loanStatus)
+    addLine("Category", `${application.category} - ${application.subCategory}`)
+    addLine("Requested Amount", application.requestedAmount)
+    addLine("Initial Payment", application.initialPayment)
+    addLine("Monthly Installment", application.monthlyInstallment)
+    addLine("Duration (Months)", application.durationMonths)
+    addLine("Appointment Date", application.appointmentDate)
+    addLine("Appointment Time", application.appointmentTime)
+    addLine("Appointment Location", application.appointmentLocation)
+    addLine("ID (Token)", application.token)
 
     y += 4;
-    doc.setFont("helvetica", "bold");
-    doc.text("Guarantors:", labelX, y);
+    doc.setFont("helvetica", "bold")
+    doc.text("Guarantors:", labelX, y)
     y += lineHeight;
 
     application.guarantors.forEach((g, i) => {
@@ -93,36 +91,31 @@ function ViewDetailsModal({ open, handleClose, application }) {
         g.location
       }`;
       if (y > pageHeight - margin - 50) {
-        doc.addPage();
-        y = margin;
+        doc.addPage()
+        y = margin
       }
-      doc.setFont("helvetica", "normal");
-      doc.text(line, labelX, y);
-      y += lineHeight;
+      doc.setFont("helvetica", "normal")
+      doc.text(line, labelX, y)
+      y += lineHeight
     });
 
-    // ✍ Neat signature line
     const lineY = pageHeight - 35;
     doc.setDrawColor("#000");
-    doc.line(margin + 20, lineY, pageWidth - margin - 20, lineY);
+    doc.line(margin + 20, lineY, pageWidth - margin - 20, lineY)
 
-    doc.setFont("helvetica", "italic");
-    doc.setFontSize(11);
-    doc.setTextColor("#444");
-    doc.text("Authorized Signature / Stamp", margin + 20, lineY + 6);
-
-    // Footer note
-    doc.setFontSize(10);
-    doc.setTextColor(150);
+    doc.setFont("helvetica", "italic")
+    doc.setFontSize(11)
+    doc.setTextColor("#444")
+    doc.text("Authorized Signature / Stamp", margin + 20, lineY + 6)
+    doc.setFontSize(10)
+    doc.setTextColor(150)
     doc.text(
       "Generated by Microfinance Loan System",
       margin + 5,
       pageHeight - 5
-    );
-
-    // Save
-    doc.save("loan-details.pdf");
-  };
+    )
+    doc.save("loan-details.pdf")
+  }
 
   const handleApply = async () => {
 
@@ -189,7 +182,6 @@ function ViewDetailsModal({ open, handleClose, application }) {
         <Typography mt={2}>
           <strong>Guarantors:</strong>
         </Typography>
-        {/* salarySlipURL */}
 
         {application.guarantors.map((g, i) => (
           <Typography key={i}>
@@ -237,7 +229,7 @@ function ViewDetailsModal({ open, handleClose, application }) {
         </Box>
       </Box>
     </Modal>
-  );
+  )
 }
 
-export default ViewDetailsModal;
+export default ViewDetailsModal

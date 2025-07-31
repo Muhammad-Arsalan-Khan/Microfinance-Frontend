@@ -1,7 +1,6 @@
-import React from 'react';
-import { Button, Box, Stack } from '@mui/material';
+import { Button, Box, Stack } from '@mui/material'
 
-const buttons = ['Dashboard', 'Pending', 'Approved', 'Rejected', 'Completed'];
+const buttons = ['Dashboard', 'Pending', 'Approved', 'Rejected', 'Completed']
 
 function Sidebar({ onSelect, active }) {
   return (
@@ -22,4 +21,4 @@ function Sidebar({ onSelect, active }) {
   );
 }
 
-export default Sidebar;
+export default Sidebar

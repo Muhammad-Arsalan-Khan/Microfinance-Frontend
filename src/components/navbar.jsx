@@ -1,17 +1,16 @@
-import React, { useEffect, useState } from "react";
-import { AppBar, Toolbar, Button, Typography, Box } from "@mui/material";
-import { Link } from "react-router-dom";
-import microfinanceLogo from "../assets/logo.png";
+import { AppBar, Toolbar, Button, Typography, Box } from "@mui/material"
+import { Link } from "react-router-dom"
+import logo from "../assets/logo-microfinance.png"
 import Cookies from "js-cookie";
-const userData = JSON.parse(localStorage.getItem("user"));
+const userData = JSON.parse(localStorage.getItem("user"))
 
 const Navbar = () => {
-  let authCheck = Cookies.get("token") ? true : false;
+  let authCheck = Cookies.get("token") ? true : false
   let admin = Cookies.get("isVerified") ? true : false
 
   const logout = () => {
-    authCheck = false;
-    Cookies.remove("token");
+    authCheck = false
+    Cookies.remove("token")
     Cookies.remove("isVerified")
     localStorage.removeItem("user")
   };
@@ -23,25 +22,23 @@ const Navbar = () => {
           display: "flex",
           justifyContent: "space-between",
           backgroundColor: "white",
-          padding: "20px",
+          padding: "10px",
         }}
       >
-        <Typography variant="h5" fontWeight={700} marginLeft={3.2}>
+        <Typography variant="h5" fontWeight={700} marginLeft={3.6} color="#8BC441">
           <img
-            src={microfinanceLogo}
+            src={logo}
             alt="Microfinance Logo"
-            style={{ height: 40, marginRight: 16 }}
+            style={{ height: 60, marginRight: 16 }}
           />
+          {/* MICROFINANCE */}
         </Typography>
 
-        {/* Right Side - Conditional Buttons */}
         <Box sx={{ display: { xs: "none", sm: "block" } }}>
           {authCheck ? (
-            // If authCheck is true, show Home, MyBlog, and Create Blog
             <>
               <Button
                 color="inherit"
-                // onClick={() => setRefresh(!refresh)}
                 component={Link}
                 to="/"
                 sx={{
@@ -54,7 +51,6 @@ const Navbar = () => {
               </Button>
               <Button
                 color="inherit"
-                // onClick={() => setRefresh(!refresh)}
                 component={Link}
                 to ={admin ? `/admin/dashboard/${userData.id}` :`/dashboard/${userData.id}`}
                 sx={{
@@ -68,7 +64,6 @@ const Navbar = () => {
               <Button
                 color="inherit"
                 onClick={() => {
-                  // setRefresh(!refresh);
                   logout();
                 }}
                 component={Link}
@@ -83,7 +78,6 @@ const Navbar = () => {
               </Button>
             </>
           ) : (
-            // If authCheck is false, show Login button
             <>
               <Button
                 color="inherit"
@@ -117,4 +111,4 @@ const Navbar = () => {
     </AppBar>
   );
 };
-export default Navbar;
+export default Navbar

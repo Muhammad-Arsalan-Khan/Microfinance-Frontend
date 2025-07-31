@@ -1,19 +1,12 @@
-import React, { useState } from "react";
-import {
-  Card,
-  CardContent,
-  Typography,
-  Box,
-  IconButton,
-  Modal,
-} from "@mui/material";
-import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import AppointmentModal from "../model/AppointmentModal";
+import React, { useState } from "react"
+import {Card, CardContent, Typography, Box, IconButton, Modal} from "@mui/material"
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos"
+import AppointmentModal from "../model/AppointmentModal"
 
 const AppointmentCard = ({ data }) => {
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const [open, setOpen] = useState(false)
+  const handleOpen = () => setOpen(true)
+  const handleClose = () => setOpen(false)
 
   const {
     category,
@@ -51,8 +44,6 @@ const AppointmentCard = ({ data }) => {
           <Typography>Time: {appointmentTime}</Typography>
           <Typography>Location: {appointmentLocation}</Typography>
         </Box>
-
-        {/* Right Section: QR + Modal Button */}
         <Box
           sx={{
             flex: 1,
@@ -87,4 +78,4 @@ const AppointmentCard = ({ data }) => {
   );
 };
 
-export default AppointmentCard;
+export default AppointmentCard

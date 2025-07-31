@@ -1,16 +1,15 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import axios from "axios";
+import { useEffect, useState } from "react"
+import { useParams } from "react-router-dom"
+import axios from "axios"
 import AppointmentCard from "./AppointmentCard"
 
 function LoandeatilCrad({Refresh, onDisableButton}) {
-// const [buttonDisbaled, setbuttonDisbaled] = useState(false)
-const id = useParams().id || JSON.parse(localStorage.getItem("user")).id;
-  const [loanData, setloanData] = useState([]);
+const id = useParams().id || JSON.parse(localStorage.getItem("user")).id
+  const [loanData, setloanData] = useState([])
 
   useEffect(() => {
       fetchloanApplication()
-    }, [Refresh]);
+    }, [Refresh])
 
   const fetchloanApplication = async () => {
     try {
@@ -23,7 +22,7 @@ const id = useParams().id || JSON.parse(localStorage.getItem("user")).id;
       } else {
         onDisableButton(false);
       }
-      setloanData(response.data.data);
+      setloanData(response.data.data)
     } catch (error) {
       console.error("Error fetching categories:", error)
     }
@@ -44,4 +43,4 @@ const id = useParams().id || JSON.parse(localStorage.getItem("user")).id;
   );
 }
 
-export default LoandeatilCrad;
+export default LoandeatilCrad

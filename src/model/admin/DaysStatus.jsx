@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react'
 import {
   Modal,
   Box,
@@ -7,9 +7,9 @@ import {
   MenuItem,
   Button,
   Stack,
-} from '@mui/material';
-import axios from 'axios';
-import Swal from "sweetalert2";
+} from '@mui/material'
+import axios from 'axios'
+import Swal from "sweetalert2"
 
 const style = {
   position: 'absolute',
@@ -26,8 +26,8 @@ const style = {
 const isValidDate = (dateStr) => {
   const regex = /^\d{2}-\d{2}-\d{4}$/;
   if (!regex.test(dateStr)) return false;
-  const [day, month, year] = dateStr.split('-').map(Number);
-  const date = new Date(`${year}-${month}-${day}`);
+  const [day, month, year] = dateStr.split('-').map(Number)
+  const date = new Date(`${year}-${month}-${day}`)
   return (
     date.getFullYear() === year &&
     date.getMonth() === month - 1 &&
@@ -36,20 +36,19 @@ const isValidDate = (dateStr) => {
 };
 
 function DaysStatusModal({ open, handleClose }) {
-  const [location, setLocation] = useState('HeadOffice');
-  const [date, setDate] = useState('');
-  const [isOpen, setIsOpen] = useState('');
-  const [dateError, setDateError] = useState(false);
+  const [location, setLocation] = useState('HeadOffice')
+  const [date, setDate] = useState('')
+  const [isOpen, setIsOpen] = useState('')
+  const [dateError, setDateError] = useState(false)
 
   useEffect(() => {
     if (!open) {
-      // Reset form when modal closes
       setLocation('HeadOffice');
-      setDate('');
-      setIsOpen('');
-      setDateError(false);
+      setDate('')
+      setIsOpen('')
+      setDateError(false)
     }
-  }, [open]);
+  }, [open])
 
   const handleUpdate = async () => {
     if (!location || !date || !isOpen || !isValidDate(date)) {
@@ -90,7 +89,6 @@ function DaysStatusModal({ open, handleClose }) {
         </Typography>
 
         <Stack spacing={2}>
-          {/* Location Dropdown */}
           <TextField
             select
             label="Location"
@@ -101,21 +99,19 @@ function DaysStatusModal({ open, handleClose }) {
             <MenuItem value="HeadOffice">HeadOffice</MenuItem>
           </TextField>
 
-          {/* Date Field */}
           <TextField
             label="Date (DD-MM-YYYY)"
             placeholder="e.g., 29-07-2025"
             value={date}
             onChange={(e) => {
-              setDate(e.target.value);
-              setDateError(!isValidDate(e.target.value));
+              setDate(e.target.value)
+              setDateError(!isValidDate(e.target.value))
             }}
             error={dateError}
             helperText={dateError ? 'Please enter a valid date (DD-MM-YYYY)' : ''}
             fullWidth
           />
 
-          {/* Status Dropdown */}
           <TextField
             select
             label="Status"
@@ -127,7 +123,6 @@ function DaysStatusModal({ open, handleClose }) {
             <MenuItem value="Close">Close</MenuItem>
           </TextField>
 
-          {/* Buttons */}
           <Stack direction="row" justifyContent="space-between" mt={2}>
             <Button
               variant="outlined"
@@ -146,5 +141,5 @@ function DaysStatusModal({ open, handleClose }) {
   );
 }
 
-export default DaysStatusModal;
+export default DaysStatusModal
 

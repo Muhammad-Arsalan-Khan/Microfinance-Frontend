@@ -1,13 +1,12 @@
-import React from 'react'
-import { Routes, Route } from "react-router-dom";
-import AdminRoute from "../routes/AdminRoutes";
+import { Routes, Route } from "react-router-dom"
+import AdminRoute from "../routes/AdminRoutes"
 import AuthRoutes from "../routes/authRoutes"
-import PrivateRoutes from "../routes/privateRoutes";
+import PrivateRoutes from "../routes/privateRoutes"
 import LoginPage from './LoginPage'
 import SignupPage from './SignupPage'
 import LandingPage from './LandingPage'
-import Dashboard from './Dashboard';
-import AdminDashboard from './admin/Dashboard';
+import Dashboard from './Dashboard'
+import AdminDashboard from './admin/Dashboard'
 import NotFound from "./NotFound"
 
 function Home() {

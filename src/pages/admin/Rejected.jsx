@@ -1,7 +1,7 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-import LoanApplicationCard from "../../components/admin/LoanApplicationCard";
-import { Box, Typography } from "@mui/material";
+import axios from "axios"
+import { useEffect, useState } from "react"
+import LoanApplicationCard from "../../components/admin/LoanApplicationCard"
+import { Box, Typography } from "@mui/material"
 
 function Rejected() {
   const [LoanRejectedApplicationData, setLoanRejectedApplicationData] = useState(
@@ -9,7 +9,7 @@ function Rejected() {
   );
 
   useEffect(() => {
-    fetchLoanRejectedApplication();
+    fetchLoanRejectedApplication()
   }, []);
 
   const fetchLoanRejectedApplication = async () => {
@@ -42,8 +42,8 @@ function Rejected() {
       )
       }
     </>
-  );
+  )
 }
 
-export default Rejected;
+export default Rejected
 
