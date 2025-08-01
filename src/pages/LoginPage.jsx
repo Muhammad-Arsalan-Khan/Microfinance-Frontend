@@ -35,7 +35,7 @@ const LoginPage = () => {
   const onSubmit = async (data) => {
     try {
       setLoading(true);
-      const res = await axios.post("http://localhost:5000/api/login", data, {
+      const res = await axios.post("https://f682cd17-7850-426f-8067-58eba1e1af40.e1-us-east-azure.choreoapps.dev/api/login", data, {
         withCredentials: true,
       })
       const userData = res.data.user

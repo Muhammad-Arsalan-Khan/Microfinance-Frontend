@@ -64,7 +64,7 @@ function DaysStatusModal({ open, handleClose }) {
       };
 
       const response = await axios.patch(
-        'http://localhost:5000/api/admin/daystatus',
+        'https://f682cd17-7850-426f-8067-58eba1e1af40.e1-us-east-azure.choreoapps.dev/api/admin/daystatus',
         payload,
         { withCredentials: true }
       );

@@ -33,7 +33,7 @@ const OtpModal = ({ onClose, userId, page }) => {
     const id = userId;
     console.log("userId", id);
     try {
-      const res = await axios.patch(`http://localhost:5000/api/otp/${id}`, {
+      const res = await axios.patch(`https://f682cd17-7850-426f-8067-58eba1e1af40.e1-us-east-azure.choreoapps.dev/api/otp/${id}`, {
         isVerified: true,
         otpValue: otp,
       });

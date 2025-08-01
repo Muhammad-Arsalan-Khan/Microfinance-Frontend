@@ -15,7 +15,7 @@ function Approved() {
   const fetchLoanApprovedApplication = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:5000/api/loanrequestapproved`,
+        `https://f682cd17-7850-426f-8067-58eba1e1af40.e1-us-east-azure.choreoapps.dev/api/loanrequestapproved`,
         { withCredentials: true }
       )
       setLoanApprovedApplicationData(response.data.data)

@@ -50,7 +50,7 @@ const SignupForm = () => {
     try {
       setLoading(true);
       const response = await axios.post(
-        "http://localhost:5000/api/signup",
+        "https://f682cd17-7850-426f-8067-58eba1e1af40.e1-us-east-azure.choreoapps.dev/api/signup",
         data
       )
       const userId = response.data.data

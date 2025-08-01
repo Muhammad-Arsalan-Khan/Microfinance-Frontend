@@ -15,7 +15,7 @@ function Rejected() {
   const fetchLoanRejectedApplication = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:5000/api/loanrequestreject`,
+        `https://f682cd17-7850-426f-8067-58eba1e1af40.e1-us-east-azure.choreoapps.dev/api/loanrequestreject`,
         { withCredentials: true }
       );
       setLoanRejectedApplicationData(response.data.data)
