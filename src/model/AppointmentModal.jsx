@@ -33,7 +33,7 @@ const AppointmentModal = ({ open, handleClose, data }) => {
   doc.setFont('helvetica', 'bold')
   doc.text('Appointment Details', pageWidth / 2, 30, { align: 'center' })
 
-  let y = 50;
+  let y = 50
   const lineHeight = 10
 
   const addLine = (label, value) => {
