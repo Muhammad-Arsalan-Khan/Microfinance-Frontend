@@ -36,7 +36,7 @@ const LoginPage = () => {
   const onSubmit = async (data) => {
     try {
       setLoading(true);
-      const res = await axios.post(`${config.baseURL}/api/login`, data, {
+      const res = await axios.post(`${config.baseURL}/api/login`, data, { 
         withCredentials: true,
       })
       const userData = res.data.user
