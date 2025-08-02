@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import axios from "axios"
 import AppointmentCard from "./AppointmentCard"
+import config from "../config.js"
 
 function LoandeatilCrad({Refresh, onDisableButton}) {
 const id = useParams().id || JSON.parse(localStorage.getItem("user")).id
@@ -14,13 +15,13 @@ const id = useParams().id || JSON.parse(localStorage.getItem("user")).id
   const fetchloanApplication = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:5000/api/loanrequest/${id}`,
+        `${config.baseURL}/api/loanrequest/${id}`,
         { withCredentials: true }
       )
      if (response.data.data.length >= 3) {
-        onDisableButton(true);
+        onDisableButton(true)
       } else {
-        onDisableButton(false);
+        onDisableButton(false)
       }
       setloanData(response.data.data)
     } catch (error) {

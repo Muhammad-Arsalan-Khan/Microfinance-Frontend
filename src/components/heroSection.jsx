@@ -1,6 +1,6 @@
 import React from "react"
 import { Container, Box, Typography } from "@mui/material"
-import panel2 from "../assets/panel2.png"
+import image from "../assets/image.png"
 import TypingEffect from "./typeingEffect"
 
 const HeroSection = () => {
@@ -31,7 +31,7 @@ const HeroSection = () => {
 
         <Box flex={1} display="flex" justifyContent="center">
           <img
-            src={panel2}
+            src={image}
             alt="Mak Welfare"
             style={{ width: "100%", maxWidth: "400px", borderRadius: "8px" }}
           />

@@ -18,6 +18,7 @@ import CloseIcon from "@mui/icons-material/Close"
 import { useForm } from "react-hook-form"
 import axios from "axios"
 import Swal from "sweetalert2"
+import config from "../config.js"
 
 const modalStyle = {
   position: "absolute",
@@ -50,7 +51,7 @@ const LoanModal = ({ onClose, fetchData }) => {
   const fetchCategories = async () => {
     try {
       const response = await axios.get(
-        `https://f682cd17-7850-426f-8067-58eba1e1af40.e1-us-east-azure.choreoapps.dev/api/loancategories`,
+        `${config.baseURL}/api/loancategories`,
         { withCredentials: true }
       );
       setCatData(response.data.data)
@@ -125,7 +126,7 @@ const LoanModal = ({ onClose, fetchData }) => {
       formData.append("guarantors", JSON.stringify(guarantors))
 
       const response = await axios.post(
-        `https://f682cd17-7850-426f-8067-58eba1e1af40.e1-us-east-azure.choreoapps.dev/api/loanrequest/${id}`,
+        `${config.baseURL}/api/loanrequest/${id}`,
         formData,
         {
           headers: {

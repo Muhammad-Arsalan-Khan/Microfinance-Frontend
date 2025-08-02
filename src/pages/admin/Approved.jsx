@@ -2,6 +2,7 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 import LoanApplicationCard from "../../components/admin/LoanApplicationCard"
 import { Box, Typography } from "@mui/material"
+import config from "../../config.js"
 
 function Approved() {
   const [LoanApprovedApplicationData, setLoanApprovedApplicationData] = useState(
@@ -15,7 +16,7 @@ function Approved() {
   const fetchLoanApprovedApplication = async () => {
     try {
       const response = await axios.get(
-        `https://f682cd17-7850-426f-8067-58eba1e1af40.e1-us-east-azure.choreoapps.dev/api/loanrequestapproved`,
+        `${config.baseURL}/api/loanrequestapproved`,
         { withCredentials: true }
       )
       setLoanApprovedApplicationData(response.data.data)

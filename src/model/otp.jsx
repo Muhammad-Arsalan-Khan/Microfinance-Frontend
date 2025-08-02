@@ -3,6 +3,7 @@ import { Box, Modal, Typography, TextField, Button } from "@mui/material"
 import {  toast } from "react-toastify"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
+import config from "../config.js"
 
 const modalStyle = {
   position: "absolute",
@@ -33,7 +34,7 @@ const OtpModal = ({ onClose, userId, page }) => {
     const id = userId;
     console.log("userId", id);
     try {
-      const res = await axios.patch(`https://f682cd17-7850-426f-8067-58eba1e1af40.e1-us-east-azure.choreoapps.dev/api/otp/${id}`, {
+      const res = await axios.patch(`${config.baseURL}/api/otp/${id}`, {
         isVerified: true,
         otpValue: otp,
       });

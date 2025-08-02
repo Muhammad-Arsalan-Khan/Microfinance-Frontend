@@ -6,6 +6,7 @@ import loginSchema from "../validation/loginSchema"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
 import OtpModal from "../model/otp"
+import config from "../config.js"
 
 const LoginPage = () => {
   const [showOtpModal, setShowOtpModal] = useState(false)
@@ -35,7 +36,7 @@ const LoginPage = () => {
   const onSubmit = async (data) => {
     try {
       setLoading(true);
-      const res = await axios.post("https://f682cd17-7850-426f-8067-58eba1e1af40.e1-us-east-azure.choreoapps.dev/api/login", data, {
+      const res = await axios.post(`${config.baseURL}/api/login`, data, {
         withCredentials: true,
       })
       const userData = res.data.user

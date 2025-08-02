@@ -2,6 +2,7 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 import { Box, Card, CardContent, Typography, Grid, Button } from "@mui/material"
 import DaysStatusModal from "../../model/admin/DaysStatus"
+import config from "../../config.js"
 
 function MainDashboard() {
   const [LoanApplicationData, setLoanApplicationData] = useState([])
@@ -14,7 +15,7 @@ function MainDashboard() {
   const fetchLoanApplication = async () => {
     try {
       const response = await axios.get(
-        `https://f682cd17-7850-426f-8067-58eba1e1af40.e1-us-east-azure.choreoapps.dev/api/loanrequest`,
+        `${config.baseURL}/api/loanrequest`,
         { withCredentials: true }
       );
       setLoanApplicationData(response.data.data)

@@ -10,6 +10,7 @@ import {
 } from '@mui/material'
 import axios from 'axios'
 import Swal from "sweetalert2"
+import config from "../../config.js"
 
 const style = {
   position: 'absolute',
@@ -64,7 +65,7 @@ function DaysStatusModal({ open, handleClose }) {
       };
 
       const response = await axios.patch(
-        'https://f682cd17-7850-426f-8067-58eba1e1af40.e1-us-east-azure.choreoapps.dev/api/admin/daystatus',
+        `${config.baseURL}/api/admin/daystatus`,
         payload,
         { withCredentials: true }
       );

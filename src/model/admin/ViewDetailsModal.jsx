@@ -11,6 +11,7 @@ import {
 } from "@mui/material"
 import { jsPDF } from "jspdf"
 import axios from "axios"
+import config from "../../config.js"
 
 const style = {
   position: "absolute",
@@ -122,7 +123,7 @@ function ViewDetailsModal({ open, handleClose, application }) {
     try {
       const id = application._id;
       const response = await axios.patch(
-        `https://f682cd17-7850-426f-8067-58eba1e1af40.e1-us-east-azure.choreoapps.dev/api/admin/loanapproved/${id}`,
+        `${config.baseURL}/api/admin/loanapproved/${id}`,
         { loanStatus },
         { withCredentials: true }
       );

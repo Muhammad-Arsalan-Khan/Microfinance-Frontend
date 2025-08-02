@@ -14,6 +14,7 @@ import { useForm, Controller } from "react-hook-form"
 import { yupResolver } from "@hookform/resolvers/yup"
 import signupSchema from "../validation/signupSchema"
 import OtpModal from "../model/otp"
+import config from "../config.js"
 
 
 
@@ -50,7 +51,7 @@ const SignupForm = () => {
     try {
       setLoading(true);
       const response = await axios.post(
-        "https://f682cd17-7850-426f-8067-58eba1e1af40.e1-us-east-azure.choreoapps.dev/api/signup",
+        `${config.baseURL}/api/signup`,
         data
       )
       const userId = response.data.data

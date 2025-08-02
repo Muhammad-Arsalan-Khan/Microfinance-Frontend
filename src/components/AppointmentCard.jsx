@@ -32,7 +32,6 @@ const AppointmentCard = ({ data }) => {
          width: "600px"
         }}
       >
-        {/* Left Section: Appointment Details */}
         <Box sx={{ flex: 2 }}>
           <Typography variant="h6">
             {category}{" "}
