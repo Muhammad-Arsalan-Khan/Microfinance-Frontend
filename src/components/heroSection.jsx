@@ -1,4 +1,3 @@
-import React from "react"
 import { Container, Box, Typography } from "@mui/material"
 import image from "../assets/image.png"
 import TypingEffect from "./typeingEffect"

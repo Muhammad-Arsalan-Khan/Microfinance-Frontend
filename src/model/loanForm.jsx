@@ -151,7 +151,7 @@ const LoanModal = ({ onClose, fetchData }) => {
         {
           headers: {
             "Content-Type": "multipart/form-data",
-            "Authorization": `Bearer ${Cookies.get("token")}`
+             Authorization : `Bearer ${Cookies.get("token")}`
           },
         }
       )

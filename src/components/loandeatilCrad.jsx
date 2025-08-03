@@ -22,7 +22,7 @@ const id = useParams().id || JSON.parse(localStorage.getItem("user")).id
       const response = await axios.get(
         `${config.baseURL}/api/loanrequest/${id}`,{
           headers:{
-          "Authorization": `Bearer ${Cookies.get("token")}`
+          Authorization : `Bearer ${Cookies.get("token")}`
         }}
       )
      if (response.data.data.length >= 3) {
