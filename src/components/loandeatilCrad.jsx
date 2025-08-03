@@ -14,9 +14,15 @@ const id = useParams().id || JSON.parse(localStorage.getItem("user")).id
 
   const fetchloanApplication = async () => {
     try {
+      // const response = await axios.get(
+      //   `${config.baseURL}/api/loanrequest/${id}`,
+      //   { withCredentials: true }
+      // )
       const response = await axios.get(
-        `${config.baseURL}/api/loanrequest/${id}`,
-        { withCredentials: true }
+        `${config.baseURL}/api/loanrequest/${id}`,{
+          headers:{
+          "Authorization": `Bearer ${Cookies.get("token")}`
+        }}
       )
      if (response.data.data.length >= 3) {
         onDisableButton(true)

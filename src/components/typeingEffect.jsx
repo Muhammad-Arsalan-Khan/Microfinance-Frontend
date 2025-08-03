@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Box, Typography, Divider } from '@mui/material'
+import { Box, Typography } from '@mui/material'
 
 const words = ['Daily Meals', 'Health Care', 'Free Education', 'Support Services', 'Monthly Family Support', 'Clean Water & Lot More']
 

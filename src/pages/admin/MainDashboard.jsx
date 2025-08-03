@@ -14,10 +14,18 @@ function MainDashboard() {
 
   const fetchLoanApplication = async () => {
     try {
+      // const response = await axios.get(
+      //   `${config.baseURL}/api/loanrequest`,
+      //   { withCredentials: true }
+      // )
       const response = await axios.get(
         `${config.baseURL}/api/loanrequest`,
-        { withCredentials: true }
-      );
+        {
+          headers:{
+            Authorization: `Bearer ${Cookies.get("token")}`
+          }
+        }
+      )
       setLoanApplicationData(response.data.data)
     } catch (error) {
       console.error("error fetching loan application:", error)

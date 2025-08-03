@@ -15,12 +15,19 @@ function Approved() {
 
   const fetchLoanApprovedApplication = async () => {
     try {
+      // const response = await axios.get(
+      //   `${config.baseURL}/api/loanrequestapproved`,
+      //   { withCredentials: true }
+      // )
       const response = await axios.get(
         `${config.baseURL}/api/loanrequestapproved`,
-        { withCredentials: true }
+        { 
+          headers: {
+            Authorization: `Bearer ${Cookies.get("token")}`
+          }
+         }
       )
       setLoanApprovedApplicationData(response.data.data)
-      // console.log(response.data.data)
     } catch (error) {
       console.error("error fetching loan application:", error)
     }

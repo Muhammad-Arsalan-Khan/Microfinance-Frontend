@@ -122,12 +122,20 @@ function ViewDetailsModal({ open, handleClose, application }) {
 
     try {
       const id = application._id;
-      const response = await axios.patch(
+      // const response = await axios.patch(
+      //   `${config.baseURL}/api/admin/loanapproved/${id}`,
+      //   { loanStatus },
+      //   { withCredentials: true }
+      // )
+       const response = await axios.patch(
         `${config.baseURL}/api/admin/loanapproved/${id}`,
         { loanStatus },
-        { withCredentials: true }
-      );
-      console.log(response.data);
+        { 
+          headers:{
+            Authorization: `Bearer ${Cookies.get("token")} `
+          }
+        }
+      )
       handleClose()
     } catch (err) {
       console.error("failed to update status", err);

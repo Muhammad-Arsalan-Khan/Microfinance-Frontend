@@ -1,5 +1,5 @@
-import React, { useState } from "react"
-import {Card, CardContent, Typography, Box, IconButton, Modal} from "@mui/material"
+import { useState } from "react"
+import {Card, Typography, Box, IconButton} from "@mui/material"
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos"
 import AppointmentModal from "../model/AppointmentModal"
 

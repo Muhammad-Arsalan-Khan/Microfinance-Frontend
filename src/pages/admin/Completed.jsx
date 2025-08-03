@@ -15,10 +15,18 @@ function Completed() {
 
   const fetchLoanCompletedApplication = async () => {
     try {
-      const response = await axios.get(
+      // const response = await axios.get(
+      //   `${config.baseURL}/api/loanrequestcomplete`,
+      //   { withCredentials: true }
+      // )
+       const response = await axios.get(
         `${config.baseURL}/api/loanrequestcomplete`,
-        { withCredentials: true }
-      );
+        { 
+          headers: {
+            Authorization: `Bearer ${Cookies.get("token")}`
+          }
+         }
+      )
       setLoanCompletedApplicationData(response.data.data)
     } catch (error) {
       console.error("error fetching loan application:", error)

@@ -64,12 +64,18 @@ function DaysStatusModal({ open, handleClose }) {
         isOpen: isOpen === 'Open' ? true : false,
       };
 
+      // const response = await axios.patch(
+      //   `${config.baseURL}/api/admin/daystatus`,
+      //   payload,
+      //   { withCredentials: true }
+      // )
       const response = await axios.patch(
-        `${config.baseURL}/api/admin/daystatus`,
-        payload,
-        { withCredentials: true }
-      );
-
+        `${config.baseURL}/api/admin/daystatus`,payload,
+         {
+          headers: {
+            Authorization: `Bearer ${Cookies.get("token")} `
+         }}
+      )
       console.log('Day status updated:', response.data);
       handleClose()
       Swal.fire({

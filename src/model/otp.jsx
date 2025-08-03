@@ -34,11 +34,17 @@ const OtpModal = ({ onClose, userId, page }) => {
     const id = userId;
     console.log("userId", id);
     try {
-      const res = await axios.patch(`${config.baseURL}/api/otp/${id}`, {
-        isVerified: true,
-        otpValue: otp,
-      });
-      console.log("res", res);
+      // const res = await axios.patch(`${config.baseURL}/api/otp/${id}`, {
+      //   isVerified: true,
+      //   otpValue: otp,
+      // }) 
+      const res = await axios.patch(`${config.baseURL}/api/otp/${id}`, { isVerified: true,otpValue: otp},
+      {
+        headers : {
+        Authorization: `Bearer ${Cookies.get("token")} `
+      }
+      }
+    ) 
       if (res.status == 200) {
         if (page === "login") {
           toast.success(

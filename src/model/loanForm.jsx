@@ -50,10 +50,18 @@ const LoanModal = ({ onClose, fetchData }) => {
 
   const fetchCategories = async () => {
     try {
+      // const response = await axios.get(
+      //   `${config.baseURL}/api/loancategories`,
+      //   { withCredentials: true }
+      // )
       const response = await axios.get(
         `${config.baseURL}/api/loancategories`,
-        { withCredentials: true }
-      );
+        { 
+          headers: {
+            Authorization:  `Bearer ${Cookies.get("token")} `
+          }
+         }
+      )
       setCatData(response.data.data)
     } catch (error) {
       console.error("error fetching categories", error)
@@ -125,17 +133,28 @@ const LoanModal = ({ onClose, fetchData }) => {
 
       formData.append("guarantors", JSON.stringify(guarantors))
 
+      // const response = await axios.post(
+      //   `${config.baseURL}/api/loanrequest/${id}`,
+      //   formData,
+      //   {
+      //     headers: {
+      //       "Content-Type": "multipart/form-data",
+      //       "Authorization": `Bearer ${Cookies.get("token")}`
+      //     },
+      //     withCredentials: true,
+      //   }
+      // )
       const response = await axios.post(
         `${config.baseURL}/api/loanrequest/${id}`,
         formData,
         {
           headers: {
             "Content-Type": "multipart/form-data",
+            "Authorization": `Bearer ${Cookies.get("token")}`
           },
-          withCredentials: true,
         }
       )
-      onClose();
+      onClose()
       Swal.fire({
         title: "Application submitted!",
         icon: "success",

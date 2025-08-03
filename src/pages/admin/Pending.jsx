@@ -15,9 +15,17 @@ function Pending() {
 
   const fetchLoanPenddingApplication = async () => {
     try {
+      // const response = await axios.get(
+      //   `${config.baseURL}/api/loanrequestpendding`,
+      //   { withCredentials: true }
+      // )
       const response = await axios.get(
         `${config.baseURL}/api/loanrequestpendding`,
-        { withCredentials: true }
+        { 
+          headers:{
+            Authorization: `Bearer ${Cookies.get("token")}`
+          }
+         }
       )
       setLoanPeddingApplicationData(response.data.data)
     } catch (error) {

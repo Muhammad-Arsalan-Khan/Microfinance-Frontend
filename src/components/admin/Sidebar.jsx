@@ -18,7 +18,7 @@ function Sidebar({ onSelect, active }) {
         ))}
       </Stack>
     </Box>
-  );
+  )
 }
 
 export default Sidebar
