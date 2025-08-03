@@ -32,14 +32,14 @@ const TypingEffect = () => {
   }, [charIndex, isDeleting, wordIndex])
 
   return (
-    <Box display="flex" flexDirection={"column"} justifyContent="center"  height="200px" >
-      <Typography variant="h5" gutterBottom fontWeight="600">
+    <Box display="flex" flexDirection={"column"} justifyContent="center"  height="200px"  >
+      <Typography variant="h5" gutterBottom fontWeight="600" sx={{ fontSize: {xs: "20px" }}}>
         The largest NGO offering free&nbsp;
       </Typography>
 
       {/* Line 2: Typing Animation */}
         <Typography variant="h5" sx={{ color: 'primary.main' }}>
-        <Box component="span" fontWeight="600" sx={{ borderRight: '2px solid', paddingRight: '4px' }}>
+        <Box component="span" fontWeight="600" sx={{ borderRight: '2px solid', paddingRight: '4px',fontSize: {xs: "20px" } }}>
           {text}
         </Box>
       </Typography>

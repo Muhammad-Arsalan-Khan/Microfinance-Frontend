@@ -11,9 +11,12 @@ const HeroSection = () => {
         justifyContent="space-between"
         flexDirection="row"
         padding={4}
+        sx={{
+        flexDirection: { xs: 'column', sm: 'row' } 
+      }}
       >
         <Box flex={1} paddingLeft={4}>
-          <Typography variant="h3" gutterBottom fontWeight="bold">
+          <Typography variant="h3" gutterBottom fontWeight="bold" sx={{ fontSize: {xs: "25px" }}}>
             Welcome to{" "}
             <Box component="span" color="#8BC441">
               MAK

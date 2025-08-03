@@ -1,24 +1,33 @@
-import  { useState } from "react";
-import { Box, TextField, Button, Typography,Paper,Snackbar,Alert,Link} from "@mui/material"
-import { useForm, Controller } from "react-hook-form"
-import { yupResolver } from "@hookform/resolvers/yup"
-import loginSchema from "../validation/loginSchema"
-import axios from "axios"
-import { useNavigate } from "react-router-dom"
-import OtpModal from "../model/otp"
-import config from "../config.js"
-import Cookies from "js-cookie"
+import { useState } from "react";
+import {
+  Box,
+  TextField,
+  Button,
+  Typography,
+  Paper,
+  Snackbar,
+  Alert,
+  Link,
+} from "@mui/material";
+import { useForm, Controller } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import loginSchema from "../validation/loginSchema";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import OtpModal from "../model/otp";
+import config from "../config.js";
+import Cookies from "js-cookie";
 
 const LoginPage = () => {
-  const [showOtpModal, setShowOtpModal] = useState(false)
-  const [loading, setLoading] = useState(false)
-  const [userId, setUserId] = useState(null)
+  const [showOtpModal, setShowOtpModal] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [userId, setUserId] = useState(null);
   const [snackbar, setSnackbar] = useState({
     open: false,
     message: "",
     severity: "info",
   });
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const {
     control,
@@ -37,36 +46,36 @@ const LoginPage = () => {
   const onSubmit = async (data) => {
     try {
       setLoading(true);
-      // const res = await axios.post(`${config.baseURL}/api/login`, data, { 
+      // const res = await axios.post(`${config.baseURL}/api/login`, data, {
       //   withCredentials: true,
       // })
-      const res = await axios.post(`${config.baseURL}/api/login`, data)
-      const userData = res.data.user
-      localStorage.setItem("user", JSON.stringify(userData))
+      const res = await axios.post(`${config.baseURL}/api/login`, data);
+      const userData = res.data.user;
+      localStorage.setItem("user", JSON.stringify(userData));
       if (userData.isVerified) {
         setSnackbar({
           open: true,
           message: "Login successful",
           severity: "success",
-        })
+        });
         if (userData.isAdmin) {
           setTimeout(() => {
-            Cookies.set("token", res.data.token)
-            Cookies.set("isVerified", res.data.Verified)
-            navigate(`/admin/dashboard/${userData.id}`)
+            Cookies.set("token", res.data.token);
+            Cookies.set("isVerified", res.data.Verified);
+            navigate(`/admin/dashboard/${userData.id}`);
           }, 1500);
         } else {
           setTimeout(() => {
-            Cookies.set("token", res.data.token)
-            navigate(`/dashboard/${userData.id}`)
-          }, 1500)
+            Cookies.set("token", res.data.token);
+            navigate(`/dashboard/${userData.id}`);
+          }, 1500);
         }
-        setLoading(false)
+        setLoading(false);
       }
     } catch (err) {
-      setLoading(false)
-      if(err.response?.data?.message == "unAuthorized user"){
-        setUserId(err.response?.data?.data)
+      setLoading(false);
+      if (err.response?.data?.message == "unAuthorized user") {
+        setUserId(err.response?.data?.data);
         setSnackbar({
           open: true,
           message: "Please verify your account via OTP try to login again",
@@ -84,7 +93,15 @@ const LoginPage = () => {
   };
 
   return (
-    <Paper elevation={3} sx={{ p: 4, maxWidth: 450, mx: "auto", mt: 5 }}>
+    <Paper
+      elevation={3}
+      sx={{
+        p: { xs: 2, sm: 4 },
+        maxWidth: { xs: "90%", sm: 450 },
+        mx: "auto",
+        mt: { xs: 3, sm: 5 },
+      }}
+      >
       <Typography variant="h5" color="primary" gutterBottom>
         Login
       </Typography>
@@ -125,17 +142,21 @@ const LoginPage = () => {
           Login
         </Button>
         <Box sx={{ marginTop: 2 }}>
-            <Typography variant="body2" color="textSecondary" align="center">
-              Don't have an account?{" "}
-              <Link href="/signup" underline="hover" color="primary">
-                Signup
-              </Link>
-            </Typography>
-          </Box>
+          <Typography variant="body2" color="textSecondary" align="center">
+            Don't have an account?{" "}
+            <Link href="/signup" underline="hover" color="primary">
+              Signup
+            </Link>
+          </Typography>
+        </Box>
       </Box>
 
       {showOtpModal && (
-        <OtpModal onClose={() => setShowOtpModal(false)} userId={userId} page={"login"} />
+        <OtpModal
+          onClose={() => setShowOtpModal(false)}
+          userId={userId}
+          page={"login"}
+        />
       )}
 
       <Snackbar
@@ -151,7 +172,7 @@ const LoginPage = () => {
         </Alert>
       </Snackbar>
     </Paper>
-  )
-}
+  );
+};
 
-export default LoginPage
+export default LoginPage;

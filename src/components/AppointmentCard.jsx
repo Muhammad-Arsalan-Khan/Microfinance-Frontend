@@ -27,9 +27,10 @@ const AppointmentCard = ({ data }) => {
           p: 2,
           paddingRight: 0,
           mb: 2,
-          height: 180,
           maxWidth: 650,
-         width: "600px"
+          flexDirection :{xs: 'column', sm: 'row'},
+          width:{xs: "250px", sm: "600px"},
+          height:{xs: "auto", sm:"180px"}
         }}
       >
         <Box sx={{ flex: 2 }}>
@@ -49,6 +50,7 @@ const AppointmentCard = ({ data }) => {
             display: "flex",
             alignItems: "center",
             justifyContent: "flex-end",
+            flexDirection :{xs: 'column', sm: 'row'},
             gap: 1,
           }}
         >
@@ -60,7 +62,8 @@ const AppointmentCard = ({ data }) => {
           <IconButton
             onClick={handleOpen}
             sx={{
-              height: 190,
+              height: {xs: "auto", sm: "190px"},
+              width:{xs:"100%", sm: "auto"},
               borderRadius: 2,
               backgroundColor: "#1976d2",
               color: "#fff",

@@ -73,7 +73,16 @@ const SignupForm = () => {
   };
 
   return (
-    <Paper elevation={3} sx={{ p: 4, maxWidth: 450, mx: "auto", mt: 5 }}>
+    // <Paper elevation={3} sx={{ p: 4, maxWidth: 450, mx: "auto", mt: 5 }}>
+     <Paper
+      elevation={3}
+      sx={{
+        p: { xs: 2, sm: 4 },
+        maxWidth: { xs: "90%", sm: 450 },
+        mx: "auto",
+        mt: { xs: 3, sm: 5 },
+      }}
+      >
       <Typography variant="h5" color="primary" gutterBottom>
         Sign Up
       </Typography>

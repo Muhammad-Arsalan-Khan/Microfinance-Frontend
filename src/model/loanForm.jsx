@@ -30,7 +30,7 @@ const modalStyle = {
   borderRadius: 2,
   boxShadow: 24,
   p: 4,
-  width: 500,
+  width: {xs: "90%", sm:500},
 };
 
 const LoanModal = ({ onClose, fetchData }) => {
