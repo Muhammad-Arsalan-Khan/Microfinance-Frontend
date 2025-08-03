@@ -19,7 +19,7 @@ const HeroSection = () => {
           <Typography variant="h3" gutterBottom fontWeight="bold" sx={{ fontSize: {xs: "25px" }}}>
             Welcome to{" "}
             <Box component="span" color="#8BC441">
-              MAK
+              Pak Qarza
             </Box>{" "}
             Welfare Non Governmental Organization in Pakistan
           </Typography>
