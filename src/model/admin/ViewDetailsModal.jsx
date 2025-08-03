@@ -12,6 +12,7 @@ import {
 import { jsPDF } from "jspdf"
 import axios from "axios"
 import config from "../../config.js"
+import Cookies from "js-cookie"
 
 const style = {
   position: "absolute",

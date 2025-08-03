@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 import LoanApplicationCard from "../../components/admin/LoanApplicationCard"
 import { Box, Typography } from "@mui/material"
 import config from "../../config.js"
+import Cookies from "js-cookie"
 
 function Completed() {
   const [LoanCompletedApplicationData, setLoanCompletedApplicationData] = useState(

@@ -19,6 +19,7 @@ import { useForm } from "react-hook-form"
 import axios from "axios"
 import Swal from "sweetalert2"
 import config from "../config.js"
+import Cookies from "js-cookie"
 
 const modalStyle = {
   position: "absolute",

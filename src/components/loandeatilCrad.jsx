@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom"
 import axios from "axios"
 import AppointmentCard from "./AppointmentCard"
 import config from "../config.js"
+import Cookies from "js-cookie"
 
 function LoandeatilCrad({Refresh, onDisableButton}) {
 const id = useParams().id || JSON.parse(localStorage.getItem("user")).id

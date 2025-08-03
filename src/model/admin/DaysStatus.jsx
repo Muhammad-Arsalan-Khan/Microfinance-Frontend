@@ -11,6 +11,7 @@ import {
 import axios from 'axios'
 import Swal from "sweetalert2"
 import config from "../../config.js"
+import Cookies from "js-cookie"
 
 const style = {
   position: 'absolute',

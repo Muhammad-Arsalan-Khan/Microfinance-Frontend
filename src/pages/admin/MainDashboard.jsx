@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 import { Box, Card, CardContent, Typography, Grid, Button } from "@mui/material"
 import DaysStatusModal from "../../model/admin/DaysStatus"
 import config from "../../config.js"
+import Cookies from "js-cookie"
 
 function MainDashboard() {
   const [LoanApplicationData, setLoanApplicationData] = useState([])
