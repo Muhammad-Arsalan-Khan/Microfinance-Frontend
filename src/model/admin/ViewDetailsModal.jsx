@@ -8,6 +8,7 @@ import {
   Select,
   FormControl,
   InputLabel,
+  Divider
 } from "@mui/material"
 import { jsPDF } from "jspdf"
 import axios from "axios"
@@ -19,7 +20,7 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 500,
+  width: { xs: "90%", sm: 500 },
   bgcolor: "background.paper",
   borderRadius: 2,
   boxShadow: 24,
@@ -145,7 +146,7 @@ function ViewDetailsModal({ open, handleClose, application }) {
 
   return (
     <Modal open={open} onClose={handleClose}>
-      <Box sx={style}>
+      <Box sx={style} >
         <Typography variant="h6" gutterBottom>
           View Details
         </Typography>
@@ -194,9 +195,12 @@ function ViewDetailsModal({ open, handleClose, application }) {
         </Typography>
 
         {application.guarantors.map((g, i) => (
+          <>
           <Typography key={i}>
             {i + 1}. {g.name} | {g.email} | {g.cnic} | {g.location}
           </Typography>
+          <Divider sx={{  mb:1 }} />
+          </>
         ))}
 
         {application.salarySlipURL && (
@@ -226,8 +230,8 @@ function ViewDetailsModal({ open, handleClose, application }) {
           </Select>
         </FormControl>
 
-        <Box display="flex" justifyContent="space-between" mt={3}>
-          <Button variant="outlined" onClick={handleClose}>
+        <Box display="flex" justifyContent="space-between" mt={3} flexDirection={{ xs: 'column-reverse', sm: 'row' }} gap={2}>
+          <Button variant="outlined"  onClick={handleClose}>
             Cancel
           </Button>
           <Button variant="contained" color="success" onClick={handleApply}>

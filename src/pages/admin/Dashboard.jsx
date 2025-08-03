@@ -24,7 +24,7 @@ function Dashboard() {
   return (
     <>
       <Navbar />
-      <Box display="flex" height="calc(100vh - 64px)">
+      <Box display="flex" height="calc(100vh - 64px)" sx={{flexDirection :{xs: 'column', sm: 'row'}}} >
         <Sidebar onSelect={setActivePage} active={activePage} />
         <Box flex={1} p={3}>
           {renderPage()}
