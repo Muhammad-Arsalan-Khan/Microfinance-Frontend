@@ -2,9 +2,8 @@ import { AppBar, Toolbar, Button, Typography, Box, IconButton, Drawer, List, Lis
 import { Link } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
 import logo from "../assets/logo-microfinance.png";
-import Cookies from "js-cookie";
-const userData = JSON.parse(localStorage.getItem("user"))
-import {  useState } from "react"
+import Cookies from "js-cookie"
+import { useState } from "react"
 
 const Navbar = () => {
   const [openDrawer, setOpenDrawer] = useState(false);
@@ -15,19 +14,14 @@ const Navbar = () => {
 
   let authCheck = Cookies.get("token") ? true : false;
   let admin = Cookies.get("isVerified") ? true : false;
+  const userData = JSON.parse(localStorage.getItem("user"))
 
   const logout = () => {
-    authCheck = false;
-<<<<<<< HEAD
+    authCheck = false
     Cookies.remove("token")
     Cookies.remove("isVerified")
     localStorage.removeItem("user")
-=======
-    Cookies.remove("token");
-    Cookies.remove("isVerified");
-    localStorage.removeItem("user");
->>>>>>> 29ca576864e3bccd28053dfd0ef7891d0ab11715
-  };
+  }
 
   const menuItems = (
     <>

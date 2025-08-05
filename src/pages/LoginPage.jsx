@@ -49,7 +49,7 @@ const LoginPage = () => {
       // const res = await axios.post(`${config.baseURL}/api/login`, data, {
       //   withCredentials: true,
       // })
-      const res = await axios.post(`${config.baseURL}/api/login`, data);
+      const res = await axios.post(`${config.baseURL}/api/login`, data)
       const userData = res.data.user
       localStorage.setItem("user", JSON.stringify(userData))
       if (userData.isVerified) {

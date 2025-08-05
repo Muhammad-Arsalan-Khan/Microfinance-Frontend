@@ -19,19 +19,12 @@ const modalStyle = {
 };
 
 const OtpModal = ({ onClose, userId, page }) => {
-<<<<<<< HEAD
-  // console.log("page", page);
-=======
-  console.log("page", page);
->>>>>>> 29ca576864e3bccd28053dfd0ef7891d0ab11715
+  // console.log("page", page)
   const [otp, setOtp] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false)
-  const navigate = useNavigate();
-<<<<<<< HEAD
+  const navigate = useNavigate()
   const email = localStorage.getItem("mic_email")
-=======
->>>>>>> 29ca576864e3bccd28053dfd0ef7891d0ab11715
 
   const handleVerify = async () => {
     if (!/^\d{4,6}$/.test(otp)) {
@@ -47,21 +40,13 @@ const OtpModal = ({ onClose, userId, page }) => {
       //   isVerified: true,
       //   otpValue: otp,
       // }) 
-<<<<<<< HEAD
       const res = await axios.patch(`${config.baseURL}/api/otp/${id}`, { email , otp},
-=======
-      const res = await axios.patch(`${config.baseURL}/api/otp/${id}`, { isVerified: true,otpValue: otp},
->>>>>>> 29ca576864e3bccd28053dfd0ef7891d0ab11715
       {
         headers : {
         Authorization: `Bearer ${Cookies.get("token")} `
       }
       }
-<<<<<<< HEAD
     )
-=======
-    ) 
->>>>>>> 29ca576864e3bccd28053dfd0ef7891d0ab11715
       if (res.status == 200) {
         if (page === "login") {
           toast.success(
@@ -79,10 +64,7 @@ const OtpModal = ({ onClose, userId, page }) => {
         }, 1500)
       }
       setLoading(false)
-<<<<<<< HEAD
       localStorage.removeItem("mic_email")
-=======
->>>>>>> 29ca576864e3bccd28053dfd0ef7891d0ab11715
     } catch (err) {
       setLoading(false)
       setError(err.response?.data?.message || "OTP verification failed")
