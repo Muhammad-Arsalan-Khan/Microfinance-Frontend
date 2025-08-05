@@ -18,9 +18,15 @@ const Navbar = () => {
 
   const logout = () => {
     authCheck = false;
+<<<<<<< HEAD
     Cookies.remove("token")
     Cookies.remove("isVerified")
     localStorage.removeItem("user")
+=======
+    Cookies.remove("token");
+    Cookies.remove("isVerified");
+    localStorage.removeItem("user");
+>>>>>>> 29ca576864e3bccd28053dfd0ef7891d0ab11715
   };
 
   const menuItems = (

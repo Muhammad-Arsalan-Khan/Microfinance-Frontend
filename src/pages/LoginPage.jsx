@@ -51,7 +51,11 @@ const LoginPage = () => {
       // })
       const res = await axios.post(`${config.baseURL}/api/login`, data);
       const userData = res.data.user;
+<<<<<<< HEAD
       localStorage.setItem("user", JSON.stringify(userData))
+=======
+      localStorage.setItem("user", JSON.stringify(userData));
+>>>>>>> 29ca576864e3bccd28053dfd0ef7891d0ab11715
       if (userData.isVerified) {
         setSnackbar({
           open: true,
@@ -73,17 +77,27 @@ const LoginPage = () => {
         setLoading(false);
       }
     } catch (err) {
+<<<<<<< HEAD
       setLoading(false)
       if (err.response?.data?.message == "unAuthorized user") {
         const email = err.response?.data?.email
         localStorage.setItem("mic_email", email)
+=======
+      setLoading(false);
+      if (err.response?.data?.message == "unAuthorized user") {
+>>>>>>> 29ca576864e3bccd28053dfd0ef7891d0ab11715
         setUserId(err.response?.data?.data);
         setSnackbar({
           open: true,
           message: "Please verify your account via OTP try to login again",
           severity: "warning",
+<<<<<<< HEAD
         })
         setShowOtpModal(true)
+=======
+        });
+        setShowOtpModal(true);
+>>>>>>> 29ca576864e3bccd28053dfd0ef7891d0ab11715
       }
       setSnackbar({
         open: true,
